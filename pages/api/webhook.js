@@ -7,7 +7,8 @@ let list_id = process.env.LISTID;
 
 export default function handler(req, res) {
   let body = req.body;
-  let name = body.name;
+  console.log(body);
+  let name = body.queryResult.parameters.item;
   fetch(
     `https:api.trello.com/1/cards?idList=${list_id}&name=${name}&key=${key}&token=${token}`,
     {
