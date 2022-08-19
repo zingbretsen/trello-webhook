@@ -8,7 +8,6 @@ let list_id = process.env.LISTID;
 export default async function handler(req, res) {
   let body = req.body;
   let item = body.intent.params.item.resolved;
-  console.log(item);
   let result = await fetch(
     `https:api.trello.com/1/cards?idList=${list_id}&name=${item}&key=${key}&token=${token}`,
     {
@@ -19,7 +18,6 @@ export default async function handler(req, res) {
     }
   )
     .then((response) => {
-      console.log(`Response: ${response.status} ${response.statusText}`);
       return response.text();
     })
     .then((text) => res.status(200).json({}))
