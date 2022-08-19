@@ -7,15 +7,10 @@ let list_id = process.env.LISTID;
 
 export default async function handler(req, res) {
   let body = req.body;
-  console.log(body);
-  // let name = body.queryResult.parameters.item;
-  let item = body.intent.params.item;
+  let item = body.intent.params.item.resolved;
   console.log(item);
-  let query = body.intent.params.query;
-  let name = query;
-  console.log(query);
   let result = await fetch(
-    `https:api.trello.com/1/cards?idList=${list_id}&name=${name}&key=${key}&token=${token}`,
+    `https:api.trello.com/1/cards?idList=${list_id}&name=${item}&key=${key}&token=${token}`,
     {
       method: "POST",
       headers: {
