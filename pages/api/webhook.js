@@ -12,6 +12,7 @@ export default async function handler(req, res) {
   console.log(body.intent.params.item);
   console.log(body.scene.slots.item);
   for (var i = 0; i < items.length; i++) {
+    let item = items[i];
     let result = await fetch(
       `https:api.trello.com/1/cards?idList=${list_id}&name=${item}&key=${key}&token=${token}`,
       {
