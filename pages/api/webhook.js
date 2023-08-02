@@ -8,6 +8,7 @@ let list_id = process.env.LISTID;
 export default async function handler(req, res) {
   let body = req.body;
   console.log(body);
+  console.log(body.intent);
 
   let query = body.intent.query;
   let item_string = query.match(/^add (.*)/);
